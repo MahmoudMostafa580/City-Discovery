@@ -1,6 +1,7 @@
 package com.mahmoud.citydiscovery.ui
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -8,7 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mahmoud.citydiscovery.databinding.CityLayoutBinding
 import com.mahmoud.citydiscovery.pojo.City
 
-class CityAdapter : ListAdapter<City, CityAdapter.CityViewHolder>(DiffCallBack) {
+class CityAdapter(
+    private val citiesList: List<City>,
+    private val itemClickListener: OnItemClickListener
+) : ListAdapter<City, CityAdapter.CityViewHolder>(DiffCallBack) {
 
     companion object DiffCallBack : DiffUtil.ItemCallback<City>() {
         override fun areItemsTheSame(oldItem: City, newItem: City): Boolean {
@@ -27,9 +31,7 @@ class CityAdapter : ListAdapter<City, CityAdapter.CityViewHolder>(DiffCallBack) 
             binding.cityName.text = "${city.name} , ${city.country}"
             binding.cityCoordinatesLon.text = "${city.coord.lon} ,"
             binding.cityCoordinatesLat.text = " ${city.coord.lat}"
-//            binding.executePendingBindings()
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CityViewHolder {
@@ -39,6 +41,12 @@ class CityAdapter : ListAdapter<City, CityAdapter.CityViewHolder>(DiffCallBack) 
     override fun onBindViewHolder(holder: CityViewHolder, position: Int) {
         val city = getItem(position)
         holder.bind(city)
-        holder.itemView.setOnClickListener {  }
+        holder.itemView.setOnClickListener {
+            itemClickListener.onItemClick(city.coord.lon, city.coord.lat)
+        }
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(lon: Double, lat: Double)
     }
 }

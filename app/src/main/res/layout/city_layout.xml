@@ -8,8 +8,11 @@
         android:layout_width="match_parent"
         android:layout_height="76dp"
         android:layout_margin="4dp"
-        app:cardUseCompatPadding="true"
-        app:cardCornerRadius="8dp">
+        android:focusable="true"
+        app:cardCornerRadius="8dp"
+        android:clickable="true"
+        android:foreground="?attr/selectableItemBackground"
+        app:cardUseCompatPadding="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
