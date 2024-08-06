@@ -2,6 +2,8 @@ package com.mahmoud.citydiscovery
 
 import android.app.Application
 import android.util.Log
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.mahmoud.citydiscovery.pojo.City
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
@@ -17,15 +19,15 @@ class MyApplication : Application() {
         Log.i("data", jsonFileString!!)
 
         /*
-        Use moshi as Json parser instead of Gson because moshi is known for its flexibility,
-        performance, kotlin support, and easy to apply.
+        Use Gson as Json parser because Gson is known for its simple and easy to use,
+        performance and type safety.
          */
 
-        val moshi = Moshi.Builder().build()
-        val type = Types.newParameterizedType(List::class.java, City::class.java)
-        val listAdapter: JsonAdapter<List<City>> = moshi.adapter(type)
 
-        cities = listAdapter.fromJson(jsonFileString)!!
+        val gson = Gson()
+        val listCityType = object : TypeToken<List<City>>() {}.type
+
+        cities = gson.fromJson(jsonFileString, listCityType)
     }
 
     fun getCities(): List<City> {
