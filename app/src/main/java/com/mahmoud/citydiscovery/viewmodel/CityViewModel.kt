@@ -22,6 +22,6 @@ init {
 }
 
     private fun getCitiesData(){
-        _citiesProperties.value = application.getCities()
+        _citiesProperties.value = application.getCities().sorted()
     }
 }

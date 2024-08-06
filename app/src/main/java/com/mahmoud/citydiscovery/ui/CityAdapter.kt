@@ -44,6 +44,7 @@ class CityAdapter(
         }
     }
 
+    //Interface to handle click listener on items of list.
     interface OnItemClickListener {
         fun onItemClick(lon: Double, lat: Double)
     }

@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+
         val binding: ActivityMainBinding = ActivityMainBinding.inflate(LayoutInflater.from(this))
         setContentView(binding.root)
 
@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
 
         cityViewModel.citiesProperties.observe(this) {
             if (it != null) {
+                //Handle click on city item to open google maps.
                 val adapter = CityAdapter(object : CityAdapter.OnItemClickListener {
                     override fun onItemClick(lon: Double, lat: Double) {
                         openGoogleMaps(lon, lat)
@@ -37,6 +38,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    //open location of city using long and lat of it.
     private fun openGoogleMaps(lon: Double, lat: Double) {
         val mapsUri = Uri.parse("geo:$lat,$lon")
 
