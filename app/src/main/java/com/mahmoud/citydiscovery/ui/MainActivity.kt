@@ -6,9 +6,9 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.widget.Toast
+import androidx.appcompat.widget.SearchView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.mahmoud.citydiscovery.databinding.ActivityMainBinding
 import com.mahmoud.citydiscovery.viewmodel.CityViewModel
@@ -36,6 +36,18 @@ class MainActivity : AppCompatActivity() {
                 Log.i("data completed: ", it.size.toString())
             }
         }
+        binding.searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                Toast.makeText(application, "Asabah", Toast.LENGTH_SHORT).show()
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                Toast.makeText(application, "Amassy", Toast.LENGTH_SHORT).show()
+                return true
+            }
+
+        })
     }
 
     //open location of city using long and lat of it.
