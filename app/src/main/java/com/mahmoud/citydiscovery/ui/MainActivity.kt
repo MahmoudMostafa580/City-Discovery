@@ -8,10 +8,8 @@ import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.mahmoud.citydiscovery.R
 import com.mahmoud.citydiscovery.databinding.ActivityMainBinding
 import com.mahmoud.citydiscovery.viewmodel.CityViewModel
 
@@ -25,9 +23,9 @@ class MainActivity : AppCompatActivity() {
 
         val cityViewModel: CityViewModel = ViewModelProvider(this).get(CityViewModel::class.java)
 
-        cityViewModel.citiesProperties.observe(this, Observer {
+        cityViewModel.citiesProperties.observe(this) {
             if (it != null) {
-                val adapter = CityAdapter(it, object: CityAdapter.OnItemClickListener{
+                val adapter = CityAdapter(object : CityAdapter.OnItemClickListener {
                     override fun onItemClick(lon: Double, lat: Double) {
                         openGoogleMaps(lon, lat)
                     }
@@ -36,7 +34,7 @@ class MainActivity : AppCompatActivity() {
                 binding.citiesList.adapter = adapter
                 Log.i("data completed: ", it.size.toString())
             }
-        })
+        }
     }
 
     private fun openGoogleMaps(lon: Double, lat: Double) {

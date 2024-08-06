@@ -1,7 +1,6 @@
 package com.mahmoud.citydiscovery.ui
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -10,7 +9,6 @@ import com.mahmoud.citydiscovery.databinding.CityLayoutBinding
 import com.mahmoud.citydiscovery.pojo.City
 
 class CityAdapter(
-    private val citiesList: List<City>,
     private val itemClickListener: OnItemClickListener
 ) : ListAdapter<City, CityAdapter.CityViewHolder>(DiffCallBack) {
 

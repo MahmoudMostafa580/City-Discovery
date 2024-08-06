@@ -26,7 +26,8 @@
                 android:src="@drawable/location_city"
                 app:layout_constraintBottom_toTopOf="@id/location_img"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
 
             <ImageView
                 android:id="@+id/location_img"
@@ -36,7 +37,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/city_img" />
+                app:layout_constraintTop_toBottomOf="@id/city_img"
+                tools:ignore="ContentDescription" />
 
             <TextView
                 android:id="@+id/city_name"
