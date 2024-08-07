@@ -5,6 +5,7 @@ import android.util.Log
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.mahmoud.citydiscovery.pojo.City
+import com.mahmoud.citydiscovery.utils.getJsonDataFromAsset
 
 class MyApplication : Application() {
 

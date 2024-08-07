@@ -40,12 +40,18 @@ class CityAdapter(
         val city = getItem(position)
         holder.bind(city)
         holder.itemView.setOnClickListener {
-            itemClickListener.onItemClick(city.coord.lon, city.coord.lat)
+            itemClickListener.onItemClick(city)
         }
+    }
+
+    fun filterList(citiesList:List<City>){
+        submitList(null)
+        submitList(citiesList)
+        notifyDataSetChanged()
     }
 
     //Interface to handle click listener on items of list.
     interface OnItemClickListener {
-        fun onItemClick(lon: Double, lat: Double)
+        fun onItemClick(city: City)
     }
 }

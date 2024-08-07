@@ -1,4 +1,4 @@
-package com.mahmoud.citydiscovery
+package com.mahmoud.citydiscovery.utils
 
 import android.content.Context
 import java.io.IOException
