@@ -26,7 +26,8 @@ class CityAdapter(
     class CityViewHolder(private var binding: CityLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(city: City) {
-            binding.cityName.text = "${city.name} , ${city.country}"
+            binding.cityName.text = "${city.name} ,"
+            binding.cityCountry?.text = "${city.country}"
             binding.cityCoordinatesLon.text = "${city.coord.lon} ,"
             binding.cityCoordinatesLat.text = " ${city.coord.lat}"
         }

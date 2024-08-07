@@ -1,14 +1,19 @@
 package com.mahmoud.citydiscovery.ui
 
+import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
+import android.view.inputmethod.InputMethodManager
+import android.widget.SearchView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.SearchView
-import androidx.appcompat.widget.SearchView.OnCloseListener
 import androidx.lifecycle.ViewModelProvider
 import com.mahmoud.citydiscovery.databinding.ActivityMainBinding
 import com.mahmoud.citydiscovery.pojo.City
@@ -20,7 +25,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val trie = Trie()
 
         val binding: ActivityMainBinding = ActivityMainBinding.inflate(LayoutInflater.from(this))
         setContentView(binding.root)
@@ -29,6 +33,8 @@ class MainActivity : AppCompatActivity() {
 
         cityViewModel.citiesProperties.observe(this) { it ->
             if (it != null) {
+                val trie = Trie()
+
                 //Handle click on city item to open google maps.
                 val adapter = CityAdapter(object : CityAdapter.OnItemClickListener {
                     override fun onItemClick(city: City) {
@@ -47,28 +53,37 @@ class MainActivity : AppCompatActivity() {
                 // SearchView listener implementation
                 binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                     override fun onQueryTextSubmit(query: String?): Boolean {
-                        if (query!!.isNotEmpty()){
+                        if (query!!.trim().isNotEmpty()) {
                             val filteredList = trie.search(query)
                             adapter.filterList(filteredList)
+                            binding.searchView.clearFocus()
+
                             Log.i("Submit Filtered List:: ", "${filteredList.size}")
+                        }else{
+                            adapter.filterList(ArrayList())
                         }
                         return false
                     }
 
                     override fun onQueryTextChange(newText: String?): Boolean {
-                        if (newText!!.isNotEmpty()){
+                        Toast.makeText(application, "onQueryTextChange", Toast.LENGTH_SHORT).show()
+                        if (newText!!.trim().isNotEmpty()) {
                             val filteredList = trie.search(newText)
                             adapter.filterList(filteredList)
                             Log.i("Filtered List:: ", "${filteredList.size}")
+                        }else{
+                            adapter.filterList(ArrayList())
                         }
-                        return true
+                        return false
                     }
                 })
 
-                //Listener on close search view
+//                //Listener on close search view
                 binding.searchView.setOnCloseListener {
+                    Toast.makeText(application, "onClose", Toast.LENGTH_SHORT).show()
+                    binding.searchView.setQuery("", false)
                     binding.searchView.clearFocus()
-                    binding.searchView.setQuery("",false)
+//                    hideKeyboard(binding.root)
                     adapter.submitList(null)
                     adapter.submitList(it)
                     adapter.notifyDataSetChanged()
@@ -85,6 +100,11 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+    }
+
+    fun hideKeyboard(view: View) {
+        val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
     }
 
     //open location of city using long and lat of it.
