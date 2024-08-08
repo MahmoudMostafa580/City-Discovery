@@ -6,7 +6,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="76dp"
+        android:layout_height="wrap_content"
         android:layout_margin="4dp"
         android:focusable="true"
         app:cardCornerRadius="8dp"
@@ -16,7 +16,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="64dp"
             android:padding="4dp">
 
             <ImageView
@@ -45,34 +45,56 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingStart="8dp"
-                android:paddingEnd="8dp"
+                android:paddingEnd="2dp"
                 android:textSize="16sp"
                 android:textStyle="bold"
+                android:maxLines="1"
+                android:maxLength="12"
+                app:layout_constrainedWidth="true"
                 app:layout_constraintBottom_toBottomOf="@id/city_img"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintStart_toEndOf="@id/city_img"
                 app:layout_constraintTop_toTopOf="@id/city_img"
-                tools:text="Arizona, US" />
+                tools:text="Arizona" />
+
+            <TextView
+                android:id="@+id/city_country"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="2dp"
+                android:paddingEnd="2dp"
+                android:layout_marginEnd="4dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:maxLines="1"
+                android:maxLength="5"
+                app:layout_constraintBottom_toBottomOf="@id/city_img"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toEndOf="@id/city_name"
+                app:layout_constraintTop_toTopOf="@id/city_name"
+                tools:text=", US" />
 
             <TextView
                 android:id="@+id/city_coordinates_lon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingStart="8dp"
+                android:maxLines="1"
                 app:layout_constraintBottom_toBottomOf="@id/location_img"
                 app:layout_constraintStart_toEndOf="@id/location_img"
                 app:layout_constraintTop_toTopOf="@id/location_img"
-                tools:text="85.316666," />
+                tools:text="85.316666 ," />
 
             <TextView
                 android:id="@+id/city_coordinates_lat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:maxLines="1"
                 app:layout_constraintBottom_toBottomOf="@id/location_img"
                 app:layout_constraintStart_toEndOf="@id/city_coordinates_lon"
                 app:layout_constraintTop_toTopOf="@id/location_img"
-                tools:text="27.716667" />
+                tools:text=" 27.716667" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

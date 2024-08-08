@@ -40,7 +40,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/search_card"
-            app:spanCount="3"
+            app:spanCount="4"
             tools:listitem="@layout/city_layout" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

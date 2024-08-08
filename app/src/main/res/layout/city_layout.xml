@@ -45,36 +45,35 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingStart="8dp"
-                android:paddingEnd="8dp"
-                android:layout_marginEnd="4dp"
+                android:paddingEnd="2dp"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:maxLines="1"
-                android:maxLength="15"
+                android:maxLength="12"
+                app:layout_constrainedWidth="true"
                 app:layout_constraintBottom_toBottomOf="@id/city_img"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintStart_toEndOf="@id/city_img"
                 app:layout_constraintTop_toTopOf="@id/city_img"
-                tools:text="Arizona" />
+                tools:text="Arizonaaaaaaaaaaaa" />
 
             <TextView
                 android:id="@+id/city_country"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingStart="8dp"
-                android:paddingEnd="8dp"
+                android:paddingStart="2dp"
+                android:paddingEnd="2dp"
                 android:layout_marginEnd="4dp"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:maxLines="1"
                 android:maxLength="5"
                 app:layout_constraintBottom_toBottomOf="@id/city_img"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintStart_toEndOf="@id/city_name"
                 app:layout_constraintTop_toTopOf="@id/city_name"
-                tools:text="US" />
+                tools:text=", US" />
 
             <TextView
                 android:id="@+id/city_coordinates_lon"
