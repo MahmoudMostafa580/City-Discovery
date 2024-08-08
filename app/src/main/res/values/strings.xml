@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">City Discovery</string>
+    <string name="search_query_hint">Search and Filter Cities</string>
 </resources>

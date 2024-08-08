@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="search_card_height">50dp</dimen>
+    <dimen name="city_list_padding">6dp</dimen>
+    <dimen name="city_item_margin">4dp</dimen>
+    <dimen name="corner_radius">8dp</dimen>
+    <dimen name="image_height">26dp</dimen>
+    <dimen name="image_width">26dp</dimen>
+    <dimen name="title_txt_size">16sp</dimen>
+    <dimen name="city_name_padding_start">8dp</dimen>
+    <dimen name="city_name_padding_end">2dp</dimen>
+    <dimen name="country_padding_start">2dp</dimen>
+    <dimen name="country_padding_end">2dp</dimen>
+    <dimen name="coordinates_padding_start">8dp</dimen>
+
+</resources>
